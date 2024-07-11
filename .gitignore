@@ -1,0 +1,5 @@
+pkg/
+src/
+hyprland-*.pkg.*
+Hyprland-*.tar.gz
+wlroots-hyprland-*.zip
