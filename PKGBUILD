@@ -1,10 +1,13 @@
-pkgname=hyprland
+pkgname=hyprland-0.39
+projectname=hyprland
 pkgver=0.39.1
 pkgrel=5
 pkgdesc='a highly customizable dynamic tiling Wayland compositor'
 arch=(x86_64 aarch64)
-url="https://github.com/hyprwm/${pkgname^}"
+url="https://github.com/hyprwm/${projectname^}"
 license=(BSD-3-Clause)
+provides=(hyprland)
+conflicts=(hyprland)
 depends=(cairo # libcairo.so
          gcc-libs # libgcc_s.so libstdc++.so
          glibc # libc.so libm.so
@@ -52,7 +55,7 @@ makedepends=(cmake
 optdepends=('cmake: to build and install plugins using hyprpm'
             'cpio: to build and install plugins using hyprpm'
             'meson: to build and install plugins using hyprpm')
-_archive="${pkgname^}-$pkgver"
+_archive="${projectname^}-$pkgver"
 source=("$_archive.tar.gz::$url/releases/download/v$pkgver/source-v$pkgver.tar.gz"
         "wlroots-hyprland-91de8da.zip::https://github.com/hyprwm/wlroots-hyprland/archive/91de8da4b6b9b3c5630123d2446cd6de4e80071a.zip")
 sha256sums=('48d1c58fd8db365635a56d76e05e6ea2d99fa20c020a061ee88a20407cfde787'
@@ -93,10 +96,10 @@ package() {
 		install -Dm0644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" "$cmd/$cmd.fish"
 	done
 	install -Dm0755 -t "$pkgdir/usr/bin/" build/Hyprland build/hyprctl/hyprctl build/hyprpm/hyprpm
-	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/" assets/*.png
-	install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions/" "example/$pkgname.desktop"
-	install -Dm0644 -t "$pkgdir/usr/share/$pkgname/" "example/$pkgname.conf"
-	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+	install -Dm0644 -t "$pkgdir/usr/share/$projectname/" assets/*.png
+	install -Dm0644 -t "$pkgdir/usr/share/wayland-sessions/" "example/$projectname.desktop"
+	install -Dm0644 -t "$pkgdir/usr/share/$projectname/" "example/$projectname.conf"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$projectname/" LICENSE
         find subprojects/wlroots-hyprland/build -name 'libwlroots.so.*' -type f -execdir \
                 install -Dm0755 -t "$pkgdir/usr/lib/" {} \;
 }
