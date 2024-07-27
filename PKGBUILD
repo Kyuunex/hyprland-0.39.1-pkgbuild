@@ -1,4 +1,4 @@
-pkgname=hyprland-0.39
+pkgname=hyprland0.39
 projectname=hyprland
 pkgver=0.39.1
 pkgrel=5
